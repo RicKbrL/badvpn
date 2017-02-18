@@ -1,0 +1,27 @@
+#!/bin/bash
+echo "#!/bin/bash
+if [ "'$1'" == start ]
+then
+badvpn-udpgw --listen-addr 127.0.0.1:7300 > /dev/null &
+echo 'Badvpn rodando na porta 7300'
+fi
+if [ "'$1'" == stop ]
+then
+badvpnpid="'$(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
+killall badvpn-udpgw"' >/dev/null 2>/dev/null'"
+fi" > /bin/badvpn
+chmod +x /bin/badvpn
+if [ -f /usr/bin/badvpn-udpgw ]; then
+echo -e "\033[1;32mBadvpn ja esta instalado\033[0m"
+exit
+else
+clear
+fi
+echo -e "Fazendo download do Badvpn"
+wget -O /usr/bin/badvpn-udpgw https://raw.github.com/kodokbahenol/centos/master/badvpn-udpgw64 -o /dev/null
+chmod +x /usr/bin/badvpn-udpgw
+clear
+echo -e "\033[1;32m             Instalação completa\033[0m" 
+echo -e "\033[1;37mComandos:\n\033[1;31mbadvpn start\033[1;37m para iniciar o badvpn"
+echo -e "\033[1;31mbadvpn stop \033[1;37m para parar o badvpn\033[0m"
+
