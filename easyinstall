@@ -10,7 +10,7 @@ then
 badvpnpid="'$(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
 kill -9 "'"$badvpnpid" >/dev/null 2>/dev/null
 kill $badvpnpid > /dev/null 2> /dev/null
-kill "$badvpnpid" > /dev/null 2>/dev/null'
+kill "$badvpnpid" > /dev/null 2>/dev/null''
 kill $(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
 killall badvpn-udpgw
 fi" > /bin/badvpn
