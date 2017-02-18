@@ -8,7 +8,7 @@ fi
 if [ "'$1'" == stop ]
 then
 badvpnpid="'$(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
-killall badvpn-udpgw"' >/dev/null 2>/dev/null'"
+kill -9 "'"$badvpnpid" >/dev/null 2>/dev/null'"
 fi" > /bin/badvpn
 chmod +x /bin/badvpn
 if [ -f /usr/bin/badvpn-udpgw ]; then
@@ -24,4 +24,4 @@ clear
 echo -e "\033[1;32m             Instalação completa\033[0m" 
 echo -e "\033[1;37mComandos:\n\033[1;31mbadvpn start\033[1;37m para iniciar o badvpn"
 echo -e "\033[1;31mbadvpn stop \033[1;37m para parar o badvpn\033[0m"
-
+rm -rf >/dev/null 2>/dev/null
