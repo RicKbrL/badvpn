@@ -8,11 +8,16 @@ fi
 if [ "'$1'" == stop ]
 then
 badvpnpid="'$(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
-kill -9 "'"$badvpnpid" >/dev/null 2>/dev/null'"
+kill -9 "'"$badvpnpid" >/dev/null 2>/dev/null
+kill $badvpnpid > /dev/null 2> /dev/null
+kill "$badvpnpid" > /dev/null 2>/dev/null'
+kill $(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
+killall badvpn-udpgw
 fi" > /bin/badvpn
 chmod +x /bin/badvpn
 if [ -f /usr/bin/badvpn-udpgw ]; then
 echo -e "\033[1;32mBadvpn ja esta instalado\033[0m"
+rm -rf easyinstall >/dev/null 2>/dev/null
 exit
 else
 clear
