@@ -16,7 +16,8 @@ echo -e "\033[1;32mBadvpn ja esta instalado\033[0m"
 exit
 else
 clear
-fiecho -e "\033[1;31m           Instalador Badvpn\n\033[0m"
+fi
+echo -e "\033[1;31m           Instalador Badvpn\n\033[0m"
 echo -e "Fazendo download do Badvpn"
 wget -O /usr/bin/badvpn-udpgw https://raw.github.com/kodokbahenol/centos/master/badvpn-udpgw64 -o /dev/null
 chmod +x /usr/bin/badvpn-udpgw
